@@ -1,9 +1,5 @@
-package com.sbm.core.oms.orderboard;
+package com.sbm.core.orderboard;
 
-import com.sbm.core.orderboard.InMemoryLiveOrderBoard;
-import com.sbm.core.orderboard.LiveOrderBoard;
-import com.sbm.core.orderboard.LiveOrder;
-import com.sbm.core.orderboard.Order;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -71,6 +67,19 @@ public class LiveOrderBoardTest {
         Assert.assertEquals("2.0 Kg for £406", liveOrders.get(0).getSummary());
         Assert.assertEquals("3.5 Kg for £345", liveOrders.get(1).getSummary());
         Assert.assertEquals("2.7 Kg for £290", liveOrders.get(2).getSummary());
+    }
+
+    @Test
+    public void sortsSamePricedBuyAndSellOrders() {
+        LiveOrderBoard board = new InMemoryLiveOrderBoard();
+        board.registerOrder(new OrderTestBuilder().BUY().quantity(1.3).build());
+        board.registerOrder(new OrderTestBuilder().SELL().quantity(5.4).build());
+
+        List<LiveOrder> liveOrders = board.toLadder();
+        Assert.assertEquals(2, liveOrders.size());
+
+        Assert.assertEquals("5.4 Kg for £300", liveOrders.get(0).getSummary());
+        Assert.assertEquals("1.3 Kg for £300", liveOrders.get(1).getSummary());
     }
 
     @Test

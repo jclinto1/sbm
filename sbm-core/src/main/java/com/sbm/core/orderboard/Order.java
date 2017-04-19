@@ -2,28 +2,16 @@ package com.sbm.core.orderboard;
 
 public class Order {
 
-    private final String userId;
-    private final double quantity;
-    private final Price price;
-    private final OrderType orderType;
+    public final String userId;
+    public final double quantity;
+    public final Price price;
+    public final OrderType orderType;
 
     public Order(String userId, double quantity, Price price, OrderType orderType) {
         this.userId = userId;
         this.quantity = quantity;
         this.price = price;
         this.orderType = orderType;
-    }
-
-    public double getQuantity() {
-        return this.quantity;
-    }
-
-    public Price getPrice() {
-        return this.price;
-    }
-
-    public OrderType getOrderType() {
-        return this.orderType;
     }
 
     public boolean isBUY() {

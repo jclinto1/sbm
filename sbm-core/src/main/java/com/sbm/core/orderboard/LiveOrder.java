@@ -5,10 +5,10 @@ import java.util.Set;
 
 public final class LiveOrder implements Comparable<LiveOrder> {
 
-    private final int orderId;
+    public final int orderId;
+    public final OrderType orderType;
+    public final  Price price;
     private double quantity;
-    private OrderType orderType;
-    private Price price;
     private final Set<HashedOrder> underlyingOrders = new HashSet<>();
     private String summary;
 
@@ -41,16 +41,8 @@ public final class LiveOrder implements Comparable<LiveOrder> {
                 .toString();
     }
 
-    public int getOrderId() {
-        return this.orderId;
-    }
-
     public String getSummary() {
         return this.summary;
-    }
-
-    public Price getPrice() {
-        return price;
     }
 
     @Override
@@ -82,17 +74,17 @@ public final class LiveOrder implements Comparable<LiveOrder> {
     @Override
     public int compareTo(LiveOrder other) {
         if(this.orderType == OrderType.SELL) {
-            if(this.price.isLower(other.getPrice())) {
+            if(this.price.isLower(other.price)) {
                 return 1;
-            } else if(this.price.isLower(other.getPrice()) == false) {
+            } else if(this.price.isLower(other.price) == false) {
                 return -1;
             }
         }
 
         if(this.orderType == OrderType.BUY) {
-            if(this.price.isLower(other.getPrice()) == false) {
+            if(this.price.isLower(other.price) == false) {
                 return 1;
-            } else if(this.price.isLower(other.getPrice())) {
+            } else if(this.price.isLower(other.price)) {
                 return -1;
             }
         }

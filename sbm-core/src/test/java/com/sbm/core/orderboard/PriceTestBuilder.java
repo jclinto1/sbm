@@ -1,13 +1,11 @@
-package com.sbm.core.oms.orderboard;
-
-import com.sbm.core.orderboard.Price;
+package com.sbm.core.orderboard;
 
 import java.util.Currency;
 
 public final class PriceTestBuilder {
 
     private Currency currency = Currency.getInstance("GBP");
-    private int amount;
+    private int amount = 300;
 
     public Price build() {
         return new Price(this.currency, this.amount);

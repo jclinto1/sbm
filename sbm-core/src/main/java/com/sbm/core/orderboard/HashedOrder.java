@@ -12,21 +12,21 @@ public class HashedOrder {
 
     private int hashCodeGroup() {
         int result = 0;
-        result = 31 * result + this.order.getPrice().hashCode();
-        result = 31 * result + this.order.getOrderType().hashCode();
+        result = 31 * result + this.order.price.hashCode();
+        result = 31 * result + this.order.orderType.hashCode();
         return result;
     }
 
     public Price getPrice() {
-        return this.order.getPrice();
+        return this.order.price;
     }
 
     public double getQuantity() {
-        return this.order.getQuantity();
+        return this.order.quantity;
     }
 
     public OrderType getOrderType() {
-        return this.order.getOrderType();
+        return this.order.orderType;
     }
 
     public int getKey() {

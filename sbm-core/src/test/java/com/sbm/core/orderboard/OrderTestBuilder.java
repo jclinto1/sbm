@@ -1,8 +1,4 @@
-package com.sbm.core.oms.orderboard;
-
-import com.sbm.core.orderboard.Price;
-import com.sbm.core.orderboard.Order;
-import com.sbm.core.orderboard.OrderType;
+package com.sbm.core.orderboard;
 
 /**
  * Canned data test builder class of {@code {@link Order }
@@ -99,8 +95,13 @@ public final class OrderTestBuilder {
         return this;
     }
 
-    public OrderTestBuilder orderTypeSide(OrderType orderType) {
-        this.orderType = orderType;
+    public OrderTestBuilder BUY() {
+        this.orderType = OrderType.BUY;
+        return this;
+    }
+
+    public OrderTestBuilder SELL() {
+        this.orderType = OrderType.SELL;
         return this;
     }
 }
