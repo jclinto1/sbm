@@ -1,6 +1,4 @@
-package com.sbm.core.oms.order;
-
-import com.sbm.core.orderboard.Price;
+package com.sbm.core.orderboard;
 
 public class Order {
 

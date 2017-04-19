@@ -1,4 +1,4 @@
-package com.sbm.core.oms.order.register;
+package com.sbm.core.oms.orderboard;
 
 import com.sbm.core.orderboard.Price;
 

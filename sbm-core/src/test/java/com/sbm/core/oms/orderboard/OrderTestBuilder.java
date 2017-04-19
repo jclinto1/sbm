@@ -1,8 +1,8 @@
-package com.sbm.core.oms.order.register;
+package com.sbm.core.oms.orderboard;
 
 import com.sbm.core.orderboard.Price;
-import com.sbm.core.oms.order.Order;
-import com.sbm.core.oms.order.OrderType;
+import com.sbm.core.orderboard.Order;
+import com.sbm.core.orderboard.OrderType;
 
 /**
  * Canned data test builder class of {@code {@link Order }

@@ -1,9 +1,5 @@
 package com.sbm.core.orderboard;
 
-import com.sbm.core.oms.order.HashedOrder;
-import com.sbm.core.oms.order.LiveOrder;
-import com.sbm.core.oms.order.Order;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +10,6 @@ public class InMemoryLiveOrderBoard implements LiveOrderBoard {
 
     private Map<Integer, LiveOrder> buyOrderMap = new HashMap<>();
     private Map<Integer, LiveOrder> sellOrderMap = new HashMap<>();
-
-    public InMemoryLiveOrderBoard() {
-    }
 
     @Override
     public void registerOrder(Order order) {

@@ -1,14 +1,9 @@
-package com.sbm.core.oms.order;
+package com.sbm.core.orderboard;
 
 import com.google.common.collect.Sets;
-import com.sbm.core.orderboard.Price;
 
 import java.util.Set;
 
-/**
- * A LiveOrder is made up of 1 or more underlying HashedOrder.
- * The key of the HashedOrder is used as the surrogate key for the order.
- */
 public final class LiveOrder implements Comparable<LiveOrder> {
 
     private final int orderId;

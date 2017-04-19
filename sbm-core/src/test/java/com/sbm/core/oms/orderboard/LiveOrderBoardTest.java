@@ -1,10 +1,9 @@
-package com.sbm.core.oms.b;
+package com.sbm.core.oms.orderboard;
 
 import com.sbm.core.orderboard.InMemoryLiveOrderBoard;
 import com.sbm.core.orderboard.LiveOrderBoard;
-import com.sbm.core.oms.order.LiveOrder;
-import com.sbm.core.oms.order.Order;
-import com.sbm.core.oms.order.register.OrderTestBuilder;
+import com.sbm.core.orderboard.LiveOrder;
+import com.sbm.core.orderboard.Order;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.sbm.core.oms.order;
+package com.sbm.core.orderboard;
 
 public enum OrderType {
 
