@@ -2,12 +2,12 @@ package com.sbm.core.oms.order;
 
 public interface OrderBoard {
 
-    void addOrderRow(ParentOrder parentOrder);
+    void addOrderRow(LiveOrder liveOrder);
 
-    void removeOrderRow(ParentOrder parentOrder);
+    void removeOrderRow(LiveOrder liveOrder);
 
     int rowCount();
 
-    ParentOrder firstOrder();
+    LiveOrder firstOrder();
 
 }

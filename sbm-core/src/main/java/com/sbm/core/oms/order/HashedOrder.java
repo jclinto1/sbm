@@ -1,12 +1,7 @@
 package com.sbm.core.oms.order;
 
-import com.google.common.base.Objects;
+import com.sbm.core.orderboard.Price;
 
-/**
- * Decorates the {@link Order} by adding a key hashed identified
- * which is very specific to the Live Order Board and hence this
- * identifer is not part of the order directly.
- */
 public class HashedOrder {
 
     private final Order order;
@@ -14,18 +9,26 @@ public class HashedOrder {
 
     public HashedOrder(Order order) {
         this.order = order;
-        this.key = Objects.hashCode(
-                this.order.getPrice(),
-                this.order.getCurrencyCode(),
-                this.order.getOrderType());
+        this.key = hashCodeGroup();
     }
 
-    public double getPrice() {
+    private int hashCodeGroup() {
+        int result = 0;
+        result = 31 * result + this.order.getPrice().hashCode();
+        result = 31 * result + this.order.getOrderType().hashCode();
+        return result;
+    }
+
+    public Price getPrice() {
         return this.order.getPrice();
     }
 
     public double getQuantity() {
         return this.order.getQuantity();
+    }
+
+    public OrderType getOrderType() {
+        return this.order.getOrderType();
     }
 
     public int getKey() {

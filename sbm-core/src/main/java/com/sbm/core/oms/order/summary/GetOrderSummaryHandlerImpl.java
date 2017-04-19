@@ -13,7 +13,7 @@ public class GetOrderSummaryHandlerImpl implements GetOrderSummaryHandler {
 
     @Override
     public OrderBoard execute() {
-        OrderBoard liveOrderBoard = this.orderBoardManager.getOrderBoardSummary();
+        OrderBoard liveOrderBoard = this.orderBoardManager.asOrderBoardSnapshot();
         return liveOrderBoard;
     }
 }

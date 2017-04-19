@@ -7,11 +7,11 @@ public class RegisterOrderEvent {
 
     private final String userId;
     private final double quantity;
-    private final double price;
+    private final int price;
     private final CurrencyCode currencyCode;
     private final OrderType orderType;
 
-    public RegisterOrderEvent(String userId, double quantity, double price, CurrencyCode currencyCode, OrderType orderType) {
+    public RegisterOrderEvent(String userId, double quantity, int price, CurrencyCode currencyCode, OrderType orderType) {
         this.userId = userId;
         this.quantity = quantity;
         this.price = price;
@@ -27,7 +27,7 @@ public class RegisterOrderEvent {
         return quantity;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 

@@ -22,12 +22,12 @@ public class OrderBoardManagerImpl implements OrderBoardManager {
         HashedOrder hashedOrder = new HashedOrder(order);
         int key = hashedOrder.getKey();
 
-        ParentOrder parentOrder = this.nettedOrderRepository.findByKey(key);
+        LiveOrder liveOrder = this.nettedOrderRepository.findByKey(key);
 
-        if(parentOrder == null) {
-            parentOrder = new ParentOrder(hashedOrder);
-            this.nettedOrderRepository.store(Integer.valueOf(key), parentOrder);
-            this.orderBoard.addOrderRow(parentOrder);
+        if(liveOrder == null) {
+            liveOrder = new LiveOrder(hashedOrder);
+            this.nettedOrderRepository.store(Integer.valueOf(key), liveOrder);
+            this.orderBoard.addOrderRow(liveOrder);
         } else {
             //update order
         }
@@ -42,15 +42,15 @@ public class OrderBoardManagerImpl implements OrderBoardManager {
      * @return
      */
     @Override
-    public OrderBoard getOrderBoardSummary() {
+    public OrderBoard asOrderBoardSnapshot() {
         return this.orderBoard;
     }
 
     @Override
     public void cancelOrder(int hashedOrderKey) {
 
-        ParentOrder parentOrder = this.nettedOrderRepository.findByKey(hashedOrderKey);
+        LiveOrder liveOrder = this.nettedOrderRepository.findByKey(hashedOrderKey);
 
-        this.orderBoard.removeOrderRow(parentOrder);
+        this.orderBoard.removeOrderRow(liveOrder);
     }
 }

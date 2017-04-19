@@ -5,15 +5,15 @@ import java.util.Map;
 
 public class InMemoryNettedOrderRepository implements NettedOrderRepository {
 
-    private Map<Integer, ParentOrder> index = new HashMap<>();
+    private Map<Integer, LiveOrder> index = new HashMap<>();
 
     @Override
-    public ParentOrder findByKey(int key) {
+    public LiveOrder findByKey(int key) {
         return this.index.get(key);
     }
 
     @Override
-    public void store(Integer key, ParentOrder parentOrder) {
-        this.index.put(key, parentOrder);
+    public void store(Integer key, LiveOrder liveOrder) {
+        this.index.put(key, liveOrder);
     }
 }

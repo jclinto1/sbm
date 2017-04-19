@@ -6,19 +6,19 @@ import java.util.List;
 
 public class InMemoryOrderBoard implements OrderBoard {
 
-    private final List<ParentOrder> orders = Lists.newArrayList();
+    private final List<LiveOrder> orders = Lists.newArrayList();
 
-    public ParentOrder firstOrder() {
+    public LiveOrder firstOrder() {
         return this.orders.get(0);
     }
 
-    public void addOrderRow(ParentOrder parentOrder) {
-        this.orders.add(parentOrder);
+    public void addOrderRow(LiveOrder liveOrder) {
+        this.orders.add(liveOrder);
     }
 
     @Override
-    public void removeOrderRow(ParentOrder parentOrder) {
-        this.orders.remove(parentOrder);
+    public void removeOrderRow(LiveOrder liveOrder) {
+        this.orders.remove(liveOrder);
     }
 
     @Override

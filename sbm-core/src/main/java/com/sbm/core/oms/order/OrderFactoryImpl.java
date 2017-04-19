@@ -24,24 +24,23 @@ public class OrderFactoryImpl implements OrderFactory {
     @Override
     public Order from(RegisterOrderEvent event) {
 
-        long orderId = this.orderIdGenerator.generate();
-
         String userId = event.getUserId();
         double quantity = event.getQuantity();
-        double price = event.getPrice();
+        int price = event.getPrice();
         CurrencyCode currencyCode = event.getCurrencyCode();
         OrderType orderType = event.getOrderType();
 
         // Here we can in the future add additional fields such as createdDateTime for instance
 
-        Order order = new Order(
-                orderId,
-                userId,
-                quantity,
-                price,
-                currencyCode,
-                orderType);
+//        Order order = new Order(
+//                userId,
+//                quantity,
+//                price,
+//                currencyCode,
+//                orderType);
+//
+//        return order;
 
-        return order;
+        return null;
     }
 }

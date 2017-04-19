@@ -4,7 +4,7 @@ public interface OrderBoardManager {
 
     void registerOrder(Order order);
 
-    OrderBoard getOrderBoardSummary();
+    OrderBoard asOrderBoardSnapshot();
 
     void cancelOrder(int hashedOrderKey);
 }
