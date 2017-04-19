@@ -1,9 +1,8 @@
-package com.sbm.core.oms;
+package com.sbm.core.oms.order.register;
 
 import com.sbm.core.oms.order.OrderType;
 import com.sbm.core.oms.lang.CurrencyCode;
 import com.sbm.core.oms.order.Order;
-import com.sbm.core.oms.order.register.RegisterOrderEvent;
 
 /**
  * Canned data test builder class of {@code {@link Order }

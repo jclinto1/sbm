@@ -1,10 +1,11 @@
-package com.sbm.core.oms;
+package com.sbm.core.oms.api;
 
 import com.sbm.core.oms.api.OrderBoardService;
 import com.sbm.core.oms.api.OrderBoardServiceFactory;
 import com.sbm.core.oms.order.OrderBoard;
 import com.sbm.core.oms.order.ParentOrder;
 import com.sbm.core.oms.order.cancel.CancelOrderEvent;
+import com.sbm.core.oms.order.register.RegisterOrderEventCannedDataTestBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
