@@ -37,7 +37,7 @@ public class InMemoryLiveOrderBoard implements LiveOrderBoard {
     }
 
     @Override
-    public List<LiveOrder> toSnapshotList() {
+    public List<LiveOrder> toLadder() {
         return Stream.concat(
                 this.sellOrderMap.values().stream().sorted(),
                 this.buyOrderMap.values().stream().sorted())

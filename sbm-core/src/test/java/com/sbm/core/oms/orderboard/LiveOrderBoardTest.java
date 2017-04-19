@@ -25,7 +25,7 @@ public class LiveOrderBoardTest {
     public void addSingleOrder() {
         LiveOrderBoard board = new InMemoryLiveOrderBoard();
         board.registerOrder(sellOrderA);
-        List<LiveOrder> liveOrders = board.toSnapshotList();
+        List<LiveOrder> liveOrders = board.toLadder();
         Assert.assertEquals(1, liveOrders.size());
         LiveOrder orderSummary = liveOrders.get(0);
         Assert.assertEquals("3.5 Kg for £306", orderSummary.getSummary());
@@ -36,7 +36,7 @@ public class LiveOrderBoardTest {
         LiveOrderBoard board = new InMemoryLiveOrderBoard();
         board.registerOrder(sellOrderA);
         board.registerOrder(sellOrderD);
-        List<LiveOrder> liveOrders = board.toSnapshotList();
+        List<LiveOrder> liveOrders = board.toLadder();
         Assert.assertEquals(1, liveOrders.size());
         Assert.assertEquals("5.5 Kg for £306", liveOrders.get(0).getSummary());
     }
@@ -49,7 +49,7 @@ public class LiveOrderBoardTest {
         board.registerOrder(sellOrderC);
         board.registerOrder(sellOrderD);
 
-        List<LiveOrder> liveOrders = board.toSnapshotList();
+        List<LiveOrder> liveOrders = board.toLadder();
         Assert.assertEquals(3, liveOrders.size());
 
         Assert.assertEquals("5.5 Kg for £306", liveOrders.get(0).getSummary());
@@ -65,7 +65,7 @@ public class LiveOrderBoardTest {
         board.registerOrder(buyOrderG);
         board.registerOrder(buyOrderH);
 
-        List<LiveOrder> liveOrders = board.toSnapshotList();
+        List<LiveOrder> liveOrders = board.toLadder();
         Assert.assertEquals(3, liveOrders.size());
 
         Assert.assertEquals("2.0 Kg for £406", liveOrders.get(0).getSummary());
@@ -85,7 +85,7 @@ public class LiveOrderBoardTest {
         board.registerOrder(sellOrderB);
         board.registerOrder(buyOrderG);
 
-        List<LiveOrder> liveOrders = board.toSnapshotList();
+        List<LiveOrder> liveOrders = board.toLadder();
         Assert.assertEquals(6, liveOrders.size());
 
         Assert.assertEquals("5.5 Kg for £306", liveOrders.get(0).getSummary());

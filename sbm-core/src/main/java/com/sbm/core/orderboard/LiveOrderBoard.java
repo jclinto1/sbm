@@ -6,5 +6,5 @@ public interface LiveOrderBoard {
 
     void registerOrder(Order event);
 
-    List<LiveOrder> toSnapshotList();
+    List<LiveOrder> toLadder();
 }
