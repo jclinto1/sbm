@@ -2,29 +2,23 @@ package com.sbm.core.orderboard;
 
 import java.util.Currency;
 
-/**
- * Created by jclinto on 19/04/2017.
- */
 public class Price {
 
-    private final Currency currency;
-    private final int amount;
-    private final String formatted;
+    public final Currency currency;
+    public final int amount;
+    public final String formatted;
 
     public Price(Currency currency, int amount) {
         this.currency = currency;
         this.amount = amount;
+        // Could extract a PriceFormat interface here to make this flex-able
         this.formatted = new StringBuilder(this.currency.getSymbol())
                 .append(this.amount)
                 .toString();
     }
 
-    public int intValue() {
-        return this.amount;
-    }
-
-    public String formattedText() {
-        return this.formatted;
+    public final boolean isLower(Price price) {
+        return this.amount > price.amount;
     }
 
     @Override
@@ -38,9 +32,6 @@ public class Price {
         return currency.equals(price.currency);
     }
 
-    public boolean isLower(Price price) {
-        return this.amount > price.intValue();
-    }
 
     @Override
     public int hashCode() {

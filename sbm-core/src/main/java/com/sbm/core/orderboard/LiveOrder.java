@@ -35,9 +35,10 @@ public final class LiveOrder implements Comparable<LiveOrder> {
     }
 
     private void buildSummaryMessage(HashedOrder hashedOrder) {
+        //Could extract a summary formatter interface to make this more flex-able
         this.summary = new StringBuilder(String.valueOf(this.quantity))
                 .append(" Kg for ")
-                .append(hashedOrder.getPrice().formattedText())
+                .append(hashedOrder.getPrice().formatted)
                 .toString();
     }
 
@@ -49,6 +50,9 @@ public final class LiveOrder implements Comparable<LiveOrder> {
         return OrderType.BUY == this.orderType;
     }
 
+    public boolean isSELL() {
+        return OrderType.SELL == this.orderType;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,7 +82,8 @@ public final class LiveOrder implements Comparable<LiveOrder> {
 
     @Override
     public int compareTo(LiveOrder other) {
-        if(this.orderType == OrderType.SELL) {
+        // Could extract this logic or pass to the sort directly to make this more flex-able
+        if(this.isSELL() && other.isSELL()) {
             if(this.price.isLower(other.price)) {
                 return 1;
             } else if(this.price.isLower(other.price) == false) {
@@ -86,7 +91,7 @@ public final class LiveOrder implements Comparable<LiveOrder> {
             }
         }
 
-        if(this.orderType == OrderType.BUY) {
+        if(this.isBUY() && other.isBUY()) {
             if(this.price.isLower(other.price) == false) {
                 return 1;
             } else if(this.price.isLower(other.price)) {

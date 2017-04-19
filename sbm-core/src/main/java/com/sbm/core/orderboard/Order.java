@@ -14,7 +14,7 @@ public class Order {
         this.orderType = orderType;
     }
 
-    public boolean isBUY() {
+    public final boolean isBUY() {
         return OrderType.BUY == this.orderType;
     }
 
