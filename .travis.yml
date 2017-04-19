@@ -1,3 +1,7 @@
 language: java
 jdk:
   - oraclejdk8
+env:
+  global:
+    - LANG=en_GB.UTF-8
+    - LC_ALL=en_GB.UTF-8
