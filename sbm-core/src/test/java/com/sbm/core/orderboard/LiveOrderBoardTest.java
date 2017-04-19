@@ -18,13 +18,16 @@ public class LiveOrderBoardTest {
     Order buyOrderH = new OrderTestBuilder().buyOrderH().build();
 
     @Test
-    public void addSingleOrder() {
+    public void registerTheCancelOrder() {
         LiveOrderBoard board = new InMemoryLiveOrderBoard();
         board.registerOrder(sellOrderA);
         List<LiveOrder> liveOrders = board.toLadder();
         Assert.assertEquals(1, liveOrders.size());
         LiveOrder orderSummary = liveOrders.get(0);
         Assert.assertEquals("3.5 Kg for £306", orderSummary.getSummary());
+        //Cancel the order
+        Assert.assertTrue(board.cancelOrder(liveOrders.get(0)));
+        Assert.assertEquals(0, board.toLadder().size());
     }
 
     @Test
