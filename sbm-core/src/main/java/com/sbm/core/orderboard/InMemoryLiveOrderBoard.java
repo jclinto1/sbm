@@ -1,5 +1,6 @@
 package com.sbm.core.orderboard;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,9 +57,10 @@ public class InMemoryLiveOrderBoard implements LiveOrderBoard {
 
     @Override
     public List<LiveOrder> toLadder() {
-        return Stream.concat(
-                this.sellOrderMap.values().stream().sorted(),
-                this.buyOrderMap.values().stream().sorted())
-                .collect(Collectors.toList());
+        return Collections.unmodifiableList(
+                Stream.concat(
+                        this.sellOrderMap.values().stream().sorted(),
+                        this.buyOrderMap.values().stream().sorted())
+                        .collect(Collectors.toList()));
     }
 }

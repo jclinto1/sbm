@@ -140,7 +140,7 @@ public class LiveOrderBoardTest {
         Assert.assertTrue(board.cancelOrder(liveOrders.get(0)));
         Assert.assertTrue(board.cancelOrder(liveOrders.get(1)));
         Assert.assertTrue(board.cancelOrder(liveOrders.get(2)));
-        
+
         Assert.assertEquals(0, board.toLadder().size());
     }
 }
