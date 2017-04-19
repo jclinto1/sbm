@@ -6,12 +6,12 @@
         <artifactId>sbm</artifactId>
         <groupId>com.sbm</groupId>
         <relativePath>../pom.xml</relativePath>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
 
     <groupId>com.sbm</groupId>
     <artifactId>sbm-core</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <properties>

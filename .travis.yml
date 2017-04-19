@@ -1,7 +1,14 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 env:
   global:
-    - LANG=en_GB.UTF-8
-    - LC_ALL=en_GB.UTF-8
+  - LANG=en_GB.UTF-8
+  - LC_ALL=en_GB.UTF-8
+deploy:
+  provider: releases
+  api_key:
+    secure: hkEHRdCyzWyDGC0M31g5ZUHg9pPhONEezaNio+EWax+9oRIDBTrsd8ioZIX1j78RTWpQer4rA+Q7g2eCnqIjp5S1rwaSMGFKB4/ORalH7Dz64vV5yhmDTXwXz344fazBRxov6cTYelgMzlqTcQVo1amW9bUja3d4KOc8KDPbBGY1veWiC+8eVxJ9veBFnp4cxtZ+1Y0MzKHbX0UJTxYlqm9HXTfOIlYoucII3URf5AyWnTH72+F7PaAn5SywpExeVyRdNpahkdjExm7pszS0VQQnb4BrLfvFW0mq/UetllsmxOYvP7hq3vA6F06o4RshZ5+VHurHXNfJej3as53Ivq5XmzvVESlibo1pVKbHWEB/ftMuq754RxtHYyIsr+AIo21SetYR7dIN9AFQCA4CCvLtTTDy9xiYu6Fvzbj4N+OL+1uhyeR1naFwG3Y9rDhnAh1c2pTRSoGPNncxT+kf4f3r8+49ylTyZHIWKPldP2nHDiVC192Ck3dZdtbCMHpS30fICtp+e01is8jWl2mn9EJLRe3cxOYdF5XdcP6KaaLF4ki+x7eOmoUcaTQ6jO7WMcXb8hVcESrwxgrin2yQwnHPvMB7GcNcHBVbAGaY+8f0/LD0vaFhACEmKdhbB4hh2ZMu6BLTMzZdTIX0hRfq6m1bmjLkFQRn4b/0MuzhDKA=
+  file: sbm-core-1.0.jar
+  on:
+    repo: jclinto1/sbm
