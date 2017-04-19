@@ -17,13 +17,13 @@ public class InMemoryLiveOrderBoard implements LiveOrderBoard {
         HashedOrder hashedOrder = new HashedOrder(order);
 
         if(order.isBUY()) {
-            handleOrder(hashedOrder, this.buyOrderMap);
+            registerOrderForMap(hashedOrder, this.buyOrderMap);
         } else {
-            handleOrder(hashedOrder, this.sellOrderMap);
+            registerOrderForMap(hashedOrder, this.sellOrderMap);
         }
     }
 
-    private void handleOrder(HashedOrder hashedOrder, Map<Integer, LiveOrder> backingMap) {
+    private void registerOrderForMap(HashedOrder hashedOrder, Map<Integer, LiveOrder> backingMap) {
 
         int key = hashedOrder.getKey();
         LiveOrder liveOrder = backingMap.get(key);
@@ -34,6 +34,24 @@ public class InMemoryLiveOrderBoard implements LiveOrderBoard {
         } else {
             liveOrder.merge(hashedOrder);
         }
+    }
+
+    @Override
+    public boolean cancelOrder(LiveOrder liveOrder) {
+
+        boolean removed;
+
+        if(liveOrder.isBUY()) {
+            removed = cancelOrderForMap(liveOrder, this.buyOrderMap);
+        } else {
+            removed = cancelOrderForMap(liveOrder, this.sellOrderMap);
+        }
+
+        return removed;
+    }
+
+    private boolean cancelOrderForMap(LiveOrder liveOrder, Map<Integer, LiveOrder> backingMap) {
+        return backingMap.remove(liveOrder.orderId, liveOrder);
     }
 
     @Override

@@ -83,7 +83,7 @@ public class LiveOrderBoardTest {
     }
 
     @Test
-    public void mergesAndSortsBuyAndSellOrders() {
+    public void mergesAndSortsBuyAndSellOrdersAndCancels() {
         LiveOrderBoard board = new InMemoryLiveOrderBoard();
         board.registerOrder(buyOrderF);
         board.registerOrder(sellOrderA);
@@ -103,5 +103,42 @@ public class LiveOrderBoardTest {
         Assert.assertEquals("2.0 Kg for £406", liveOrders.get(3).getSummary());
         Assert.assertEquals("3.5 Kg for £345", liveOrders.get(4).getSummary());
         Assert.assertEquals("2.7 Kg for £290", liveOrders.get(5).getSummary());
+
+        Assert.assertTrue(board.cancelOrder(liveOrders.get(1)));
+
+        liveOrders = board.toLadder();
+        Assert.assertEquals(5, liveOrders.size());
+
+        Assert.assertEquals("5.5 Kg for £306", liveOrders.get(0).getSummary());
+        Assert.assertEquals("1.2 Kg for £310", liveOrders.get(1).getSummary());
+        Assert.assertEquals("2.0 Kg for £406", liveOrders.get(2).getSummary());
+        Assert.assertEquals("3.5 Kg for £345", liveOrders.get(3).getSummary());
+        Assert.assertEquals("2.7 Kg for £290", liveOrders.get(4).getSummary());
+
+        Assert.assertTrue(board.cancelOrder(liveOrders.get(4)));
+
+        liveOrders = board.toLadder();
+        Assert.assertEquals(4, liveOrders.size());
+
+        Assert.assertEquals("5.5 Kg for £306", liveOrders.get(0).getSummary());
+        Assert.assertEquals("1.2 Kg for £310", liveOrders.get(1).getSummary());
+        Assert.assertEquals("2.0 Kg for £406", liveOrders.get(2).getSummary());
+        Assert.assertEquals("3.5 Kg for £345", liveOrders.get(3).getSummary());
+
+        Assert.assertTrue(board.cancelOrder(liveOrders.get(0)));
+
+        liveOrders = board.toLadder();
+        Assert.assertEquals(3, liveOrders.size());
+
+        Assert.assertEquals("1.2 Kg for £310", liveOrders.get(0).getSummary());
+        Assert.assertEquals("2.0 Kg for £406", liveOrders.get(1).getSummary());
+        Assert.assertEquals("3.5 Kg for £345", liveOrders.get(2).getSummary());
+
+        Assert.assertTrue(board.cancelOrder(liveOrders.get(0)));
+        Assert.assertTrue(board.cancelOrder(liveOrders.get(1)));
+        Assert.assertTrue(board.cancelOrder(liveOrders.get(2)));
+
+        liveOrders = board.toLadder();
+        Assert.assertEquals(0, liveOrders.size());
     }
 }

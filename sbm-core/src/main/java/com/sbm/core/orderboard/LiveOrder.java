@@ -7,7 +7,7 @@ public final class LiveOrder implements Comparable<LiveOrder> {
 
     public final int orderId;
     public final OrderType orderType;
-    public final  Price price;
+    public final Price price;
     private double quantity;
     private final Set<HashedOrder> underlyingOrders = new HashSet<>();
     private String summary;
@@ -44,6 +44,11 @@ public final class LiveOrder implements Comparable<LiveOrder> {
     public String getSummary() {
         return this.summary;
     }
+
+    public boolean isBUY() {
+        return OrderType.BUY == this.orderType;
+    }
+
 
     @Override
     public boolean equals(Object o) {
