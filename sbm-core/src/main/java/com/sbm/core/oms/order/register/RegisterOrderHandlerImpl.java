@@ -28,7 +28,8 @@ public class RegisterOrderHandlerImpl implements RegisterOrderHandler {
 
         Order order = this.orderFactory.from(event);
 
-        // persist order in orderRepository
+        // place holder for validation logic such as checking the userId is present in the system
+        // and has the right limits to place this order
 
         this.orderBoardManager.registerOrder(order);
     }
