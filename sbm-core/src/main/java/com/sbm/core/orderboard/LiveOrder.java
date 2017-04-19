@@ -1,7 +1,6 @@
 package com.sbm.core.orderboard;
 
-import com.google.common.collect.Sets;
-
+import java.util.HashSet;
 import java.util.Set;
 
 public final class LiveOrder implements Comparable<LiveOrder> {
@@ -10,7 +9,7 @@ public final class LiveOrder implements Comparable<LiveOrder> {
     private double quantity;
     private OrderType orderType;
     private Price price;
-    private final Set<HashedOrder> underlyingOrders = Sets.newHashSet();
+    private final Set<HashedOrder> underlyingOrders = new HashSet<>();
     private String summary;
 
     public LiveOrder(HashedOrder hashedOrder) {
